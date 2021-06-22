@@ -596,3 +596,274 @@
 
 
 //  16
+
+// теория (Статические методы)
+// class User {
+//   static #takenEmails = [];
+
+//   static isEmailTaken(email) {
+//     return User.#takenEmails.includes(email);
+//   }
+
+//   #email;
+
+//   constructor({ email }) {
+//     this.#email = email;
+//     User.#takenEmails.push(email);
+//   }
+// }
+
+// const mango = new User({ email: 'mango@mail.com' });
+
+// console.log(
+//   User.isEmailTaken('poly@mail.com')
+// ); // false
+
+// console.log(
+//   User.isEmailTaken('mango@mail.com')
+// ); // true
+
+//  задача
+// class Car {
+//   static #MAX_PRICE = 50000;
+//   // Пиши код ниже этой строки
+//   static checkPrice(price){
+//    if(price > Car.#MAX_PRICE){
+//    return 'Внимание! Цена превышает допустимую.';
+//    }
+//     return 'Всё хорошо, цена в порядке.';
+//    }
+//   // Пиши код выше этой строки
+//   constructor({ price }) {
+//     this.price = price;
+//   }
+// }
+
+// const audi = new Car({ price: 36000 });
+// const bmw = new Car({ price: 64000 });
+
+// console.log(Car.checkPrice(audi.price)); // Всё хорошо, цена в порядке.
+// console.log(Car.checkPrice(bmw.price)); // Внимание! Цена превышает допустимую.
+
+
+//  17
+
+//  теория (Наследование классов)
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+
+// class ContentWriter extends User {
+//   // Тело класса ContentWriter
+// }
+
+// const writer = new ContentWriter('mango@mail.com');
+// console.log(writer); // { email: 'mango@mail.com' }
+// console.log(writer.email); // 'mango@mail.com'
+
+//  задача
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+// // Пиши код ниже этой строки
+
+// class Admin extends User{
+//     static AccessLevel = {
+//         BASIC: 'basic',
+//         SUPERUSER: 'superuser'
+//     }
+// }
+// console.log(Admin.AccessLevel.BASIC);
+// console.log(Admin.AccessLevel.SUPERUSER);
+
+
+//  18
+
+//  теория (Конструктор дочернего класса)
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+
+// class ContentWriter extends User {
+//   posts;
+
+//   constructor({ email, posts }) {
+//     // Вызов конструктора родительского класса User
+//     super(email);
+//     this.posts = posts;
+//   }
+// }
+
+// const writer = new ContentWriter({ email: 'mango@mail.com', posts: [] });
+// console.log(writer); // { email: 'mango@mail.com', posts: [] }
+// console.log(writer.email); // 'mango@mail.com'
+
+//  задача
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+
+// class Admin extends User {
+//   // Пиши код ниже этой строки
+//   accessLevel;
+  
+//  constructor ({email, accessLevel}){
+//    super(email);
+//    this.accessLevel = accessLevel;
+//  }
+//   static AccessLevel = {
+//     BASIC: 'basic',
+//     SUPERUSER: 'superuser'
+//   };
+
+//   // Пиши код выше этой строки
+// }
+
+// const mango = new Admin({
+//   email: 'mango@mail.com',
+//   accessLevel: Admin.AccessLevel.SUPERUSER
+// });
+
+// console.log(mango.email); // mango@mail.com
+// console.log(mango.accessLevel); // superuser
+
+
+//  19
+//  теория (Методы дочернего класса)
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+
+// class ContentWriter extends User {
+//   posts;
+
+//   constructor({ email, posts }) {
+//     super(email);
+//     this.posts = posts;
+//   }
+
+//   addPost(post) {
+//     this.posts.push(post);
+//   }
+// }
+
+// const writer = new ContentWriter({ email: 'mango@mail.com', posts: [] });
+// console.log(writer); // { email: 'mango@mail.com', posts: [] }
+// console.log(writer.email); // 'mango@mail.com'
+// writer.addPost('post-1');
+// console.log(writer.posts); // ['post-1']
+
+//  задача
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+// class Admin extends User {
+//   // Пиши код ниже этой строки
+//  blacklistedEmails = [];
+  
+  
+//   static AccessLevel = {
+//     BASIC: 'basic',
+//     SUPERUSER: 'superuser'
+//   };
+
+//   accessLevel;
+
+//   constructor({ email, accessLevel }) {
+//     super(email);
+//     this.accessLevel = accessLevel;
+//   }
+//  blacklist(email){
+//   this.blacklistedEmails.push(email);
+//   }
+//  isBlacklisted(email){
+ 
+//   return this.blacklistedEmails.includes(email);
+//   }
+  
+//   // Пиши код выше этой строки
+// }
+
+// const mango = new Admin({
+//   email: 'mango@mail.com',
+//   accessLevel: Admin.AccessLevel.SUPERUSER
+// });
+
+// console.log(mango.email); // mango@mail.com
+// console.log(mango.accessLevel); // superuser
+// mango.blacklist('poly@mail.com');
+// console.log(mango.blacklistedEmails); // 'poly@mail.com'
+// console.log(mango.isBlacklisted('mango@mail.com')); //  false
+// console.log(mango.isBlacklisted('poly@mail.com')); // true 
